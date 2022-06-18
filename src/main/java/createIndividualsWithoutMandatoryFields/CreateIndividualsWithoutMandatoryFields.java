@@ -3,6 +3,7 @@ package createIndividualsWithoutMandatoryFields;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,9 +41,13 @@ public class CreateIndividualsWithoutMandatoryFields {
 	        driver.findElement(By.xpath("//P[@class='slds-truncate']")).click();
 	        WebDriverWait wait2 = new WebDriverWait(driver,Duration.ofSeconds(20));
 	        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[text()='Individuals'])[1]/following::lightning-icon[1]"))).click();
-	        		
-//	        WebDriverWait wait2 = new WebDriverWait(driver,Duration.ofSeconds(20));
-//	    	wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search recent dashboards...']")));
+	        Thread.sleep(3000);
+
+
+            WebElement newIndividual = driver.findElement(By.xpath("//span[text()='New Individual']"));
+
+            driver.executeScript("arguments[0].click();", newIndividual);
+//	        driver.findElement(By.xpath("//span[text()=\"New Individual\"]")).click();	
 
 	}
 
